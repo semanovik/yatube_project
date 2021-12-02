@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
   <title>Лев Толстой – зеркало русской революции.</title>
 {% endblock %}
@@ -7,6 +9,12 @@
 {% block content %}
   <!-- класс py-5 создает отступы сверху и снизу блока -->
   <div class="container py-5">
+    <p>
+        {{ text }}
+    </p>
+    <a href="{% url 'posts:main' %}">
+        На главную
+    </a>
     <h1>Лев Толстой – зеркало русской революции.</h1>
     <p>
       Группа тайных поклонников графа.

@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
   <title>Последние обновления на сайте</title>
 {% endblock %}
 
 {% block content%}
   <!-- класс py-5 создает отступы сверху и снизу блока -->
-  <div class="container py-5">     
+  <div class="container py-5">  
+    <p>
+        {{ text }}
+    </p>
+    <a href="{% url 'posts:group' %}">
+        В группы
+    </a>   
     <h1>Последние обновления на сайте</h1>
     <article>
       <ul>
