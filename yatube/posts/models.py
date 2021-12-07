@@ -4,13 +4,17 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+class Group(models.Model):
+    title = models.CharField(max_length=50)
+    slug = models.SlugField() 
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
 class Post(models.Model):
     # Содержание поста, текстовое поле
     text = models.TextField()
-
-    # Дата публикации, хранит дату и время
-    # Параметр auto_now_add определяет, что в поле будет автоматически подставлено
-    # время и дата создания новой записи
     pub_date = models.DateTimeField(auto_now_add=True)
 
     # Ссылка на модель User, ForeignKey
@@ -19,7 +23,14 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='posts'
         )
-        
+    group = models.ForeignKey(
+        Group,
+        related_name='group',
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
+
 
 
 
